@@ -1,0 +1,189 @@
+.ba-DataGrid {
+  width: 100%;
+}
+
+.ba-DataGrid-wrapper {
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.ba-DataGrid-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.ba-DataGrid-head {
+  background: #f5f5f5;
+}
+
+.ba-DataGrid-headerRow,
+.ba-DataGrid-filterRow {
+  border-bottom: 1px solid #ddd;
+}
+
+.ba-DataGrid-headerCell {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-right: 1px solid #e0e0e0;
+}
+
+.ba-DataGrid-headerCell:last-child {
+  border-right: none;
+}
+
+.ba-DataGrid-headerCell--sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.ba-DataGrid-headerCell--sortable:hover {
+  background: #e8e8e8;
+}
+
+.ba-DataGrid-headerCell--checkbox {
+  width: 40px;
+  text-align: center;
+}
+
+.ba-DataGrid-headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ba-DataGrid-sortIcon {
+  color: #666;
+  font-size: 0.75rem;
+}
+
+.ba-DataGrid-filter {
+  width: 100%;
+  padding: 0.375rem 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.ba-DataGrid-filter:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+.ba-DataGrid-body .ba-DataGrid-row {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.15s ease;
+}
+
+.ba-DataGrid-body .ba-DataGrid-row:hover {
+  background: #f9f9f9;
+}
+
+.ba-DataGrid-body .ba-DataGrid-row--selected {
+  background: #e3f2fd;
+}
+
+.ba-DataGrid-cell {
+  padding: 0.75rem 1rem;
+  border-right: 1px solid #e0e0e0;
+}
+
+.ba-DataGrid-cell:last-child {
+  border-right: none;
+}
+
+.ba-DataGrid-cell--checkbox {
+  width: 40px;
+  text-align: center;
+}
+
+.ba-DataGrid-cell--editable {
+  cursor: pointer;
+}
+
+.ba-DataGrid-cell--editable:hover {
+  background: #f0f0f0;
+}
+
+.ba-DataGrid-cell--loading,
+.ba-DataGrid-cell--empty {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.ba-DataGrid-editInput {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #1976d2;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: white;
+}
+
+.ba-DataGrid-editInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.ba-DataGrid-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.ba-DataGrid-paginationInfo {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.ba-DataGrid-paginationControls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ba-DataGrid-paginationButton {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.15s ease;
+}
+
+.ba-DataGrid-paginationButton:hover:not(:disabled) {
+  background: #f0f0f0;
+  border-color: #bbb;
+}
+
+.ba-DataGrid-paginationButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ba-DataGrid-paginationButton--active {
+  background: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
+
+.ba-DataGrid-paginationButton--active:hover {
+  background: #1565c0;
+  border-color: #1565c0;
+}
+
+.ba-DataGrid--loading {
+  opacity: 0.6;
+  pointer-events: none;
+}

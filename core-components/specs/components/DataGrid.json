@@ -1,0 +1,130 @@
+{
+  "$schema": "../schema.json",
+  "name": "DataGrid",
+  "category": "display",
+  "description": "An advanced data table with sorting, filtering, pagination, row selection, and inline editing capabilities for managing large datasets.",
+  "props": [
+    {
+      "name": "columns",
+      "type": "array",
+      "description": "Array of column definitions with key, label, width, sortable, filterable, and editable properties",
+      "required": true
+    },
+    {
+      "name": "data",
+      "type": "array",
+      "description": "Array of data rows",
+      "required": true
+    },
+    {
+      "name": "sortable",
+      "type": "boolean",
+      "description": "Enable column sorting",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "filterable",
+      "type": "boolean",
+      "description": "Enable column filtering",
+      "required": false,
+      "default": false
+    },
+    {
+      "name": "selectable",
+      "type": "boolean",
+      "description": "Enable row selection with checkboxes",
+      "required": false,
+      "default": false
+    },
+    {
+      "name": "editable",
+      "type": "boolean",
+      "description": "Enable inline editing",
+      "required": false,
+      "default": false
+    },
+    {
+      "name": "pageSize",
+      "type": "number",
+      "description": "Number of rows per page",
+      "required": false,
+      "default": 10
+    },
+    {
+      "name": "pagination",
+      "type": "boolean",
+      "description": "Enable pagination",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Show loading state",
+      "required": false,
+      "default": false
+    },
+    {
+      "name": "emptyText",
+      "type": "string",
+      "description": "Text to show when no data",
+      "required": false,
+      "default": "No data available"
+    },
+    {
+      "name": "onSort",
+      "type": "function",
+      "description": "Callback fired when sort changes",
+      "required": false
+    },
+    {
+      "name": "onFilter",
+      "type": "function",
+      "description": "Callback fired when filter changes",
+      "required": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "function",
+      "description": "Callback fired when row selection changes",
+      "required": false
+    },
+    {
+      "name": "onEdit",
+      "type": "function",
+      "description": "Callback fired when cell is edited",
+      "required": false
+    }
+  ],
+  "states": [
+    "default",
+    "loading",
+    "empty",
+    "sorted",
+    "filtered"
+  ],
+  "accessibility": {
+    "role": "grid",
+    "ariaAttributes": [
+      "aria-rowcount",
+      "aria-colcount",
+      "aria-sort",
+      "aria-multiselectable"
+    ],
+    "keyboardInteractions": [
+      {
+        "key": "ArrowKeys",
+        "action": "Navigate between cells"
+      },
+      {
+        "key": "Space",
+        "action": "Toggle row selection"
+      },
+      {
+        "key": "Enter",
+        "action": "Start editing cell (if editable)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "../schema.json",
+  "name": "TimePicker",
+  "category": "form",
+  "description": "Input control for selecting time values with hour/minute (and optional seconds) via input or dropdown options.",
+  "props": [
+    { "name": "value", "type": "string", "description": "Selected time value (HH:MM or HH:MM:SS)", "required": false },
+    { "name": "format", "type": "string", "description": "Time format (e.g., HH:mm, HH:mm:ss)", "required": false, "default": "HH:mm" },
+    { "name": "step", "type": "number", "description": "Minute step for dropdown options", "required": false, "default": 15 },
+    { "name": "placeholder", "type": "string", "description": "Placeholder text", "required": false, "default": "Select time" },
+    { "name": "disabled", "type": "boolean", "description": "Disable the picker", "required": false, "default": false },
+    { "name": "onChange", "type": "function", "description": "Callback when time changes", "required": false }
+  ],
+  "states": ["default", "focused", "disabled", "open"],
+  "accessibility": {
+    "role": "combobox",
+    "ariaAttributes": ["aria-expanded", "aria-controls", "aria-autocomplete"],
+    "keyboardInteractions": [
+      { "key": "ArrowDown", "action": "Open and move to next option" },
+      { "key": "ArrowUp", "action": "Move to previous option" },
+      { "key": "Enter", "action": "Select option" },
+      { "key": "Escape", "action": "Close dropdown" }
+    ]
+  }
+}

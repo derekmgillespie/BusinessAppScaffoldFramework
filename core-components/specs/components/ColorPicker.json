@@ -1,0 +1,20 @@
+{
+  "$schema": "../schema.json",
+  "name": "ColorPicker",
+  "category": "form",
+  "description": "Control to select a color via native input or preset swatches, showing a preview of the selected value.",
+  "props": [
+    { "name": "value", "type": "string", "description": "Selected color hex value", "required": false },
+    { "name": "swatches", "type": "array", "description": "Array of preset color strings", "required": false },
+    { "name": "disabled", "type": "boolean", "description": "Disable the picker", "required": false, "default": false },
+    { "name": "onChange", "type": "function", "description": "Callback when color changes", "required": false }
+  ],
+  "states": ["default", "focused", "disabled"],
+  "accessibility": {
+    "role": "textbox",
+    "ariaAttributes": ["aria-label", "aria-invalid"],
+    "keyboardInteractions": [
+      { "key": "Enter", "action": "Open native color input" }
+    ]
+  }
+}

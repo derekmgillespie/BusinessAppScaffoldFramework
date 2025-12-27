@@ -1,0 +1,94 @@
+{
+  "$schema": "../schema.json",
+  "name": "AutoComplete",
+  "category": "form",
+  "description": "A searchable input field that provides suggestions as users type, combining text input with a dropdown list of filtered options.",
+  "props": [
+    {
+      "name": "value",
+      "type": "string",
+      "description": "The current selected value",
+      "required": false
+    },
+    {
+      "name": "options",
+      "type": "array",
+      "description": "Array of option objects with label and value properties",
+      "required": true
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Placeholder text when no value is selected",
+      "required": false,
+      "default": "Type to search..."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether the input is disabled",
+      "required": false,
+      "default": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Show loading indicator for async operations",
+      "required": false,
+      "default": false
+    },
+    {
+      "name": "noOptionsText",
+      "type": "string",
+      "description": "Text to show when no options match",
+      "required": false,
+      "default": "No results found"
+    },
+    {
+      "name": "onChange",
+      "type": "function",
+      "description": "Callback fired when selection changes",
+      "required": false
+    },
+    {
+      "name": "onInputChange",
+      "type": "function",
+      "description": "Callback fired when input value changes",
+      "required": false
+    }
+  ],
+  "states": [
+    "default",
+    "focused",
+    "disabled",
+    "loading",
+    "open"
+  ],
+  "accessibility": {
+    "role": "combobox",
+    "ariaAttributes": [
+      "aria-autocomplete",
+      "aria-expanded",
+      "aria-controls",
+      "aria-activedescendant"
+    ],
+    "keyboardInteractions": [
+      {
+        "key": "ArrowDown",
+        "action": "Navigate to next option or open dropdown"
+      },
+      {
+        "key": "ArrowUp",
+        "action": "Navigate to previous option"
+      },
+      {
+        "key": "Enter",
+        "action": "Select focused option"
+      },
+      {
+        "key": "Escape",
+        "action": "Close dropdown and clear input"
+      }
+    ]
+  }
+}

@@ -34,6 +34,12 @@ import { Rating } from '@framework/components/Rating';
 import { Popover } from '@framework/components/Popover';
 import { Timeline } from '@framework/components/Timeline';
 import { FormField } from '@framework/components/FormField';
+import { AutoComplete } from '@framework/components/AutoComplete';
+import { MultiSelect } from '@framework/components/MultiSelect';
+import { DataGrid } from '@framework/components/DataGrid';
+import { TimePicker } from '@framework/components/TimePicker';
+import { ColorPicker } from '@framework/components/ColorPicker';
+import { CommandPalette, type CommandItem } from '@framework/components/CommandPalette';
 
 function App() {
   const [name, setName] = useState('');
@@ -50,20 +56,57 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [toasts, setToasts] = useState<Array<{id: number; message: string; variant: 'success' | 'error' | 'warning' | 'info'}>>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [progress, setProgress] = useState(45);
+  const [progress] = useState(45);
   const [chips, setChips] = useState(['React', 'TypeScript', 'Vite']);
   const [currentStepperStep, setCurrentStepperStep] = useState(2);
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sliderValue, setSliderValue] = useState(50);
   const [ratingValue, setRatingValue] = useState(3.5);
+  const [autoCompleteValue, setAutoCompleteValue] = useState('');
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [gridData, setGridData] = useState([
+    { id: 1, name: 'Alice Johnson', department: 'Engineering', role: 'Senior Developer', status: 'Active' },
+    { id: 2, name: 'Bob Smith', department: 'Marketing', role: 'Marketing Manager', status: 'Active' },
+    { id: 3, name: 'Carol Williams', department: 'Engineering', role: 'DevOps Engineer', status: 'Active' },
+    { id: 4, name: 'David Brown', department: 'Sales', role: 'Sales Representative', status: 'Inactive' },
+    { id: 5, name: 'Emma Davis', department: 'HR', role: 'HR Manager', status: 'Active' },
+    { id: 6, name: 'Frank Miller', department: 'Engineering', role: 'Junior Developer', status: 'Active' },
+    { id: 7, name: 'Grace Wilson', department: 'Marketing', role: 'Content Writer', status: 'Active' },
+    { id: 8, name: 'Henry Moore', department: 'Sales', role: 'Account Executive', status: 'Active' },
+    { id: 9, name: 'Iris Taylor', department: 'Engineering', role: 'Tech Lead', status: 'Active' },
+    { id: 10, name: 'Jack Anderson', department: 'Finance', role: 'Accountant', status: 'Inactive' },
+  ]);
+
+  const [selectedTime, setSelectedTime] = useState('09:00');
+  const [selectedColor, setSelectedColor] = useState('#1976d2');
+  const [paletteOpen, setPaletteOpen] = useState(false);
 
   const countryOptions = [
     { label: 'United States', value: 'us' },
     { label: 'Canada', value: 'ca' },
     { label: 'United Kingdom', value: 'uk' },
     { label: 'Australia', value: 'au' },
+    { label: 'Germany', value: 'de' },
+    { label: 'France', value: 'fr' },
+    { label: 'Japan', value: 'jp' },
+    { label: 'Brazil', value: 'br' },
   ];
+
+  const skillsOptions = [
+    { label: 'JavaScript', value: 'js' },
+    { label: 'TypeScript', value: 'ts' },
+    { label: 'React', value: 'react' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Angular', value: 'angular' },
+    { label: 'Node.js', value: 'node' },
+    { label: 'Python', value: 'python' },
+    { label: 'Java', value: 'java' },
+    { label: 'C#', value: 'csharp' },
+    { label: 'Go', value: 'go' },
+  ];
+
+  const colorSwatches = ['#1976d2', '#d32f2f', '#388e3c', '#fbc02d', '#8e24aa', '#455a64', '#00897b', '#ffa000'];
 
   const experienceOptions = [
     { label: 'Beginner', value: 'beginner' },
@@ -75,6 +118,7 @@ function App() {
   const tabItems = [
     { label: 'Overview', value: 'overview' },
     { label: 'Components', value: 'components' },
+    { label: 'Advanced', value: 'advanced' },
     { label: 'Data', value: 'data' },
   ];
 
@@ -90,6 +134,13 @@ function App() {
     { label: 'Docs', href: '#' },
   ];
 
+  const commandItems = [
+    { id: 'new-project', title: 'New Project', subtitle: 'Create a new workspace', shortcut: 'Ctrl+N' },
+    { id: 'open-advanced', title: 'Open Advanced Tab', subtitle: 'Jump to advanced components', shortcut: 'Ctrl+Alt+A' },
+    { id: 'toggle-modal', title: 'Show About Modal', subtitle: 'Open framework info modal', shortcut: 'Ctrl+M' },
+    { id: 'toggle-theme', title: 'Toggle Theme', subtitle: 'Hypothetical action placeholder', shortcut: 'Ctrl+T' },
+  ];
+
   const tableData = [
     { component: 'Button', category: 'Form', status: '✅' },
     { component: 'TextInput', category: 'Form', status: '✅' },
@@ -103,6 +154,10 @@ function App() {
     { component: 'SearchBar', category: 'Form', status: '✅' },
     { component: 'Slider', category: 'Form', status: '✅' },
     { component: 'Rating', category: 'Form', status: '✅' },
+    { component: 'AutoComplete', category: 'Form', status: '✅' },
+    { component: 'MultiSelect', category: 'Form', status: '✅' },
+    { component: 'TimePicker', category: 'Form', status: '✅' },
+    { component: 'ColorPicker', category: 'Form', status: '✅' },
     { component: 'Card', category: 'Display', status: '✅' },
     { component: 'Table', category: 'Display', status: '✅' },
     { component: 'Tabs', category: 'Display', status: '✅' },
@@ -112,12 +167,14 @@ function App() {
     { component: 'Divider', category: 'Display', status: '✅' },
     { component: 'Popover', category: 'Display', status: '✅' },
     { component: 'Timeline', category: 'Display', status: '✅' },
+    { component: 'DataGrid', category: 'Display', status: '✅' },
     { component: 'Breadcrumb', category: 'Navigation', status: '✅' },
     { component: 'Navbar', category: 'Navigation', status: '✅' },
     { component: 'Modal', category: 'Navigation', status: '✅' },
     { component: 'Dropdown', category: 'Navigation', status: '✅' },
     { component: 'Pagination', category: 'Navigation', status: '✅' },
     { component: 'Stepper', category: 'Navigation', status: '✅' },
+    { component: 'CommandPalette', category: 'Navigation', status: '✅' },
     { component: 'Alert', category: 'Feedback', status: '✅' },
     { component: 'Toast', category: 'Feedback', status: '✅' },
     { component: 'Spinner', category: 'Feedback', status: '✅' },
@@ -152,7 +209,7 @@ function App() {
   const accordionItems = [
     { title: 'What is this framework?', content: 'A technology-stack-agnostic framework for building business applications from Figma mockups with reusable components.' },
     { title: 'How does it work?', content: 'Components are defined as JSON specifications, then code generators transform them into React, Vue, Angular, or other tech stack implementations.' },
-    { title: 'What components are available?', content: '24+ components including forms, navigation, display, and feedback elements, all with Material Design styling.' },
+    { title: 'What components are available?', content: '40+ components across forms, navigation, display, and feedback, all styled with Material Design tokens.' },
   ];
 
   const stepperSteps = [
@@ -172,10 +229,31 @@ function App() {
 
   const timelineItems = [
     { title: 'Project Created', description: 'Framework initialized with core components', time: '2024-01-15', icon: '🚀' },
-    { title: 'Components Added', description: '34+ components implemented across 4 categories', time: '2024-02-20', icon: '⚙️' },
+    { title: 'Components Added', description: '41 components implemented across 4 categories', time: '2024-02-20', icon: '⚙️' },
     { title: 'Demo Enhanced', description: 'Interactive demo with all component showcases', time: '2024-03-10', icon: '✨' },
     { title: 'Production Ready', description: 'Framework ready for business applications', time: '2024-04-01', icon: '✅' },
   ];
+
+  const handleCommandSelect = (cmd: CommandItem) => {
+    switch (cmd.id) {
+      case 'new-project':
+        showToast('New project action triggered (demo)', 'success');
+        break;
+      case 'open-advanced':
+        setActiveTab('advanced');
+        showToast('Navigated to Advanced tab', 'info');
+        break;
+      case 'toggle-modal':
+        setModalOpen(true);
+        break;
+      case 'toggle-theme':
+        showToast('Theme toggle placeholder', 'info');
+        break;
+      default:
+        showToast(`Selected ${cmd.title}`, 'info');
+    }
+    setPaletteOpen(false);
+  };
 
   return (
     <div style={{ minHeight: '100vh', background: '#f5f5f5' }}>
@@ -198,7 +276,7 @@ function App() {
         
         <h1 style={{ margin: '1.5rem 0 0.5rem' }}>Framework Component Demo</h1>
         <p style={{ marginBottom: '2rem', color: '#666' }}>
-          All components generated from core specs using the framework generator.
+          41 components generated from core specs using the framework generator.
         </p>
 
         <Tabs items={tabItems} active={activeTab} onChange={setActiveTab} />
@@ -210,7 +288,7 @@ function App() {
                 <Alert 
                   variant="success" 
                   title="Success!" 
-                  message="All 14+ components have been successfully implemented."
+                  message="All 41 components are implemented, including new TimePicker, ColorPicker, and CommandPalette!"
                 />
                 <Alert 
                   variant="info" 
@@ -490,15 +568,72 @@ function App() {
 
           {activeTab === 'components' && (
             <>
-              <Card elevation="md" style={{ marginBottom: '1.5rem' }}>
-                <div style={{ padding: '1.5rem' }}>
-                  <h2 style={{ marginTop: 0, marginBottom: '1.5rem' }}>FormField Component Demo</h2>
-                  <p style={{ color: '#666', marginBottom: '1.5rem' }}>
-                    FormField is a wrapper component that adds label, error state, and hint text to form inputs.
-                    It handles accessibility attributes and validation styling automatically.
-                  </p>
-                  
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <Card elevation="md">
+                  <div style={{ padding: '1.5rem' }}>
+                    <h2 style={{ marginTop: 0, marginBottom: '1rem' }}>Button Gallery</h2>
+                    <p style={{ color: '#666', marginBottom: '1.5rem' }}>
+                      Comprehensive button variants, sizes, and states showcasing the component's flexibility.
+                    </p>
+                    
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                      {/* Variants */}
+                      <div>
+                        <h3 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1rem' }}>Variants</h3>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                        <Button label="Primary" variant="primary" onClick={() => showToast('Primary clicked', 'info')} />
+                        <Button label="Secondary" variant="secondary" onClick={() => showToast('Secondary clicked', 'info')} />
+                        <Button label="Destructive" variant="destructive" onClick={() => showToast('Destructive clicked', 'error')} />
+                        <Button label="Outline" variant="outline" onClick={() => showToast('Outline clicked', 'info')} />
+                        <Button label="Ghost" variant="ghost" onClick={() => showToast('Ghost clicked', 'info')} />
+                      </div>
+                    </div>
+
+                    {/* Sizes */}
+                    <div>
+                      <h3 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1rem' }}>Sizes</h3>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}>
+                        <Button label="Small" variant="primary" size="sm" onClick={() => showToast('Small button clicked', 'info')} />
+                        <Button label="Medium" variant="primary" size="md" onClick={() => showToast('Medium button clicked', 'info')} />
+                        <Button label="Large" variant="primary" size="lg" onClick={() => showToast('Large button clicked', 'info')} />
+                      </div>
+                    </div>
+
+                    {/* With Icons */}
+                    <div>
+                      <h3 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1rem' }}>With Icons</h3>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                        <Button label="Download" variant="primary" icon="⬇️" onClick={() => showToast('Downloading...', 'success')} />
+                        <Button label="Upload" variant="secondary" icon="⬆️" onClick={() => showToast('Uploading...', 'info')} />
+                        <Button label="Delete" variant="destructive" icon="🗑️" onClick={() => showToast('Deleted!', 'error')} />
+                        <Button label="Settings" variant="outline" icon="⚙️" onClick={() => showToast('Opening settings...', 'info')} />
+                      </div>
+                    </div>
+
+                    {/* Disabled States */}
+                    <div>
+                      <h3 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1rem' }}>Disabled States</h3>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                        <Button label="Disabled Primary" variant="primary" disabled />
+                        <Button label="Disabled Secondary" variant="secondary" disabled />
+                        <Button label="Disabled Destructive" variant="destructive" disabled />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+              </div>
+
+              <div style={{ marginBottom: '1.5rem' }}>
+                <Card elevation="md">
+                  <div style={{ padding: '1.5rem' }}>
+                    <h2 style={{ marginTop: 0, marginBottom: '1.5rem' }}>FormField Component Demo</h2>
+                    <p style={{ color: '#666', marginBottom: '1.5rem' }}>
+                      FormField is a wrapper component that adds label, error state, and hint text to form inputs.
+                      It handles accessibility attributes and validation styling automatically.
+                    </p>
+                    
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                     {/* Vertical Layout */}
                     <div style={{ padding: '1rem', background: '#f9f9f9', borderRadius: '6px' }}>
                       <h3 style={{ marginTop: 0, marginBottom: '1.5rem' }}>Vertical Layout</h3>
@@ -672,6 +807,7 @@ function App() {
                   </div>
                 </div>
               </Card>
+            </div>
 
               <Card elevation="md">
                 <div style={{ padding: '1.5rem' }}>
@@ -690,8 +826,184 @@ function App() {
               </div>
             </Card>
           )}
+
+          {activeTab === 'advanced' && (
+            <>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <Card elevation="md">
+                  <div style={{ padding: '1.5rem' }}>
+                    <h2 style={{ marginTop: 0, marginBottom: '1rem' }}>Advanced Form Components</h2>
+                    <p style={{ color: '#666', marginBottom: '1.5rem' }}>
+                      New components for complex data entry and management scenarios.
+                    </p>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+                    <div>
+                      <h3 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1rem' }}>AutoComplete</h3>
+                      <p style={{ color: '#666', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                        Searchable dropdown with real-time filtering. Type to see suggestions.
+                      </p>
+                      <FormField
+                        label="Select Country"
+                        hint="Start typing to filter options"
+                      >
+                        <AutoComplete
+                          value={autoCompleteValue}
+                          options={countryOptions}
+                          placeholder="Type country name..."
+                          onChange={(value, option) => {
+                            setAutoCompleteValue(value);
+                            showToast(`Selected: ${option?.label}`, 'success');
+                          }}
+                        />
+                      </FormField>
+                      {autoCompleteValue && (
+                        <p style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#666' }}>
+                          Selected: {countryOptions.find(c => c.value === autoCompleteValue)?.label}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <h3 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1rem' }}>MultiSelect</h3>
+                      <p style={{ color: '#666', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                        Select multiple options with searchable chips. Try selecting skills.
+                      </p>
+                      <FormField
+                        label="Technical Skills"
+                        hint="Select all that apply"
+                      >
+                        <MultiSelect
+                          value={selectedSkills}
+                          options={skillsOptions}
+                          placeholder="Choose your skills..."
+                          maxSelections={5}
+                          onChange={(values) => {
+                            setSelectedSkills(values);
+                            showToast(`${values.length} skill(s) selected`, 'info');
+                          }}
+                        />
+                      </FormField>
+                      {selectedSkills.length > 0 && (
+                        <p style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: '#666' }}>
+                          Selected {selectedSkills.length} of max 5 skills
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <Card elevation="md">
+                <div style={{ padding: '1.5rem' }}>
+                  <h2 style={{ marginTop: 0, marginBottom: '1rem' }}>Time, Color, & Commands</h2>
+                  <p style={{ color: '#666', marginBottom: '1.5rem' }}>
+                    Control scheduling, branding colors, and quick navigation with the newest components.
+                  </p>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                    <div>
+                      <h3 style={{ marginTop: 0, marginBottom: '0.75rem', fontSize: '1rem' }}>TimePicker</h3>
+                      <p style={{ color: '#666', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                        Choose times in 15-minute increments. Uses dropdown options and supports manual entry.
+                      </p>
+                      <TimePicker 
+                        value={selectedTime} 
+                        step={15} 
+                        onChange={(val) => setSelectedTime(val)}
+                      />
+                      <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <Badge label={selectedTime || 'Not set'} variant="info" />
+                        <Button label="8:30" size="sm" variant="secondary" onClick={() => setSelectedTime('08:30')} />
+                        <Button label="13:00" size="sm" variant="secondary" onClick={() => setSelectedTime('13:00')} />
+                        <Button label="Reset" size="sm" variant="ghost" onClick={() => setSelectedTime('')} />
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 style={{ marginTop: 0, marginBottom: '0.75rem', fontSize: '1rem' }}>ColorPicker</h3>
+                      <p style={{ color: '#666', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                        Pick brand colors or pick from curated swatches. Active color is previewed live.
+                      </p>
+                      <ColorPicker 
+                        value={selectedColor}
+                        swatches={colorSwatches}
+                        onChange={(val) => setSelectedColor(val)}
+                      />
+                    </div>
+
+                    <div>
+                      <h3 style={{ marginTop: 0, marginBottom: '0.75rem', fontSize: '1rem' }}>CommandPalette</h3>
+                      <p style={{ color: '#666', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                        Launch global actions with keyboard-like navigation. Try opening the palette below.
+                      </p>
+                      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                        <Button label="Open Palette" onClick={() => setPaletteOpen(true)} />
+                        <Button label="Advanced Tab" variant="secondary" size="sm" onClick={() => setActiveTab('advanced')} />
+                        <Button label="About Modal" variant="outline" size="sm" onClick={() => setModalOpen(true)} />
+                      </div>
+                      <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        {commandItems.map((cmd) => (
+                          <Badge key={cmd.id} label={cmd.shortcut || cmd.title} variant="secondary" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+            </div>
+
+              <Card elevation="md">
+                <div style={{ padding: '1.5rem' }}>
+                  <h2 style={{ marginTop: 0, marginBottom: '1rem' }}>DataGrid - Employee Management</h2>
+                  <p style={{ color: '#666', marginBottom: '1.5rem' }}>
+                    Advanced table with sorting, filtering, pagination, row selection, and inline editing.
+                    Try clicking column headers to sort, double-click cells to edit, or select rows.
+                  </p>
+                  <DataGrid
+                    columns={[
+                      { key: 'id', label: 'ID', width: '60px', sortable: true },
+                      { key: 'name', label: 'Name', sortable: true, filterable: true, editable: true },
+                      { key: 'department', label: 'Department', sortable: true, filterable: true },
+                      { key: 'role', label: 'Role', sortable: true, editable: true },
+                      { key: 'status', label: 'Status', sortable: true, filterable: true },
+                    ]}
+                    data={gridData}
+                    sortable
+                    filterable
+                    selectable
+                    editable
+                    pageSize={5}
+                    pagination
+                    onSort={(column, direction) => {
+                      showToast(`Sorted by ${column} (${direction})`, 'info');
+                    }}
+                    onSelectionChange={(rows) => {
+                      showToast(`${rows.length} row(s) selected`, 'info');
+                    }}
+                    onEdit={(rowIndex, columnKey, newValue) => {
+                      const updatedData = [...gridData];
+                      updatedData[rowIndex] = { ...updatedData[rowIndex], [columnKey]: newValue };
+                      setGridData(updatedData);
+                      showToast(`Updated ${columnKey} to "${newValue}"`, 'success');
+                    }}
+                  />
+                </div>
+              </Card>
+            </>
+          )}
         </div>
       </div>
+
+      <CommandPalette 
+        open={paletteOpen} 
+        commands={commandItems} 
+        onClose={() => setPaletteOpen(false)} 
+        onSelect={handleCommandSelect} 
+      />
 
       <Modal 
         open={modalOpen}
@@ -704,11 +1016,11 @@ function App() {
           </>
         }
       >
-        <p>This demo showcases <strong>34 components</strong> from the Business Application Framework:</p>
+        <p>This demo showcases <strong>41 components</strong> from the Business Application Framework:</p>
         <ul>
-          <li>✅ <strong>Forms (12):</strong> Button, TextInput, TextArea, Select, Checkbox, Radio, Toggle, DatePicker, FileUpload, SearchBar, Slider, Rating</li>
-          <li>✅ <strong>Display (9):</strong> Card, Table, Tabs, Accordion, Avatar, Chip, Divider, Popover, Timeline</li>
-          <li>✅ <strong>Navigation (6):</strong> Breadcrumb, Navbar, Modal, Dropdown, Pagination, Stepper</li>
+          <li>✅ <strong>Forms (17):</strong> Button, TextInput, TextArea, Select, Checkbox, Radio, Toggle, DatePicker, FileUpload, SearchBar, Slider, Rating, AutoComplete, MultiSelect, FormField, TimePicker, ColorPicker</li>
+          <li>✅ <strong>Display (10):</strong> Card, Table, Tabs, Accordion, Avatar, Chip, Divider, Popover, Timeline, DataGrid</li>
+          <li>✅ <strong>Navigation (7):</strong> Breadcrumb, Navbar, Modal, Dropdown, Pagination, Stepper, CommandPalette</li>
           <li>✅ <strong>Feedback (7):</strong> Alert, Toast, Spinner, Badge, Tooltip, ProgressBar, Skeleton</li>
         </ul>
         <p>All components are built from technology-agnostic specs and styled with Material Design tokens.</p>

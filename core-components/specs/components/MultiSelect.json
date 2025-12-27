@@ -1,0 +1,94 @@
+{
+  "$schema": "../schema.json",
+  "name": "MultiSelect",
+  "category": "form",
+  "description": "A select component that allows users to choose multiple values from a list, displaying selected items as removable chips.",
+  "props": [
+    {
+      "name": "value",
+      "type": "array",
+      "description": "Array of currently selected values",
+      "required": false,
+      "default": []
+    },
+    {
+      "name": "options",
+      "type": "array",
+      "description": "Array of option objects with label and value properties",
+      "required": true
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Placeholder text when no values are selected",
+      "required": false,
+      "default": "Select options..."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether the select is disabled",
+      "required": false,
+      "default": false
+    },
+    {
+      "name": "maxSelections",
+      "type": "number",
+      "description": "Maximum number of items that can be selected",
+      "required": false
+    },
+    {
+      "name": "searchable",
+      "type": "boolean",
+      "description": "Enable filtering options by typing",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "clearable",
+      "type": "boolean",
+      "description": "Show clear all button",
+      "required": false,
+      "default": true
+    },
+    {
+      "name": "onChange",
+      "type": "function",
+      "description": "Callback fired when selections change",
+      "required": false
+    }
+  ],
+  "states": [
+    "default",
+    "focused",
+    "disabled",
+    "open",
+    "max-reached"
+  ],
+  "accessibility": {
+    "role": "combobox",
+    "ariaAttributes": [
+      "aria-multiselectable",
+      "aria-expanded",
+      "aria-controls"
+    ],
+    "keyboardInteractions": [
+      {
+        "key": "ArrowDown",
+        "action": "Navigate to next option"
+      },
+      {
+        "key": "ArrowUp",
+        "action": "Navigate to previous option"
+      },
+      {
+        "key": "Space/Enter",
+        "action": "Toggle selected option"
+      },
+      {
+        "key": "Backspace",
+        "action": "Remove last selected item when input is empty"
+      }
+    ]
+  }
+}

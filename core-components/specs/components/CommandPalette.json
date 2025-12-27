@@ -1,0 +1,25 @@
+{
+  "$schema": "../schema.json",
+  "name": "CommandPalette",
+  "category": "navigation",
+  "description": "A modal command launcher with fuzzy search to trigger actions quickly (like Ctrl+K/Ctrl+P).",
+  "props": [
+    { "name": "open", "type": "boolean", "description": "Whether the palette is open", "required": false, "default": false },
+    { "name": "commands", "type": "array", "description": "Array of command objects with id, title, subtitle, and optional shortcut", "required": true },
+    { "name": "placeholder", "type": "string", "description": "Search input placeholder", "required": false, "default": "Search commands..." },
+    { "name": "loading", "type": "boolean", "description": "Show loading state for async results", "required": false, "default": false },
+    { "name": "onClose", "type": "function", "description": "Callback when palette is closed", "required": false },
+    { "name": "onSelect", "type": "function", "description": "Callback when a command is selected", "required": false }
+  ],
+  "states": ["closed", "open", "loading", "empty"],
+  "accessibility": {
+    "role": "dialog",
+    "ariaAttributes": ["aria-modal", "aria-labelledby"],
+    "keyboardInteractions": [
+      { "key": "Escape", "action": "Close palette" },
+      { "key": "ArrowDown", "action": "Move focus down" },
+      { "key": "ArrowUp", "action": "Move focus up" },
+      { "key": "Enter", "action": "Select focused command" }
+    ]
+  }
+}
