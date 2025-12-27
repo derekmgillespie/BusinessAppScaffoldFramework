@@ -1,0 +1,19 @@
+{
+  "name": "Alert",
+  "category": "feedback",
+  "description": "Feedback message for user actions",
+  "props": {
+    "variant": { 
+      "type": "enum", 
+      "values": ["success", "error", "warning", "info"],
+      "default": "info"
+    },
+    "title": { "type": "string" },
+    "message": { "type": "string" },
+    "dismissible": { "type": "boolean", "default": false },
+    "onDismiss": { "type": "function" }
+  },
+  "events": ["onDismiss"],
+  "accessibility": ["role", "aria-live"],
+  "version": "0.1.0"
+}

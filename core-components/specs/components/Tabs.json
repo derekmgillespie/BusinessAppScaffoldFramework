@@ -1,0 +1,12 @@
+{
+  "name": "Tabs",
+  "category": "navigation",
+  "description": "Switch between content sections",
+  "props": {
+    "items": { "type": "array", "description": "Array of { label, value }" },
+    "active": { "type": "string" },
+    "onChange": { "type": "function" }
+  },
+  "events": ["onChange"],
+  "version": "0.1.0"
+}

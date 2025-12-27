@@ -1,0 +1,22 @@
+{
+  "name": "Avatar",
+  "category": "display",
+  "description": "User profile image or initials",
+  "props": {
+    "src": { "type": "string" },
+    "alt": { "type": "string" },
+    "initials": { "type": "string" },
+    "size": { 
+      "type": "enum", 
+      "values": ["sm", "md", "lg", "xl"],
+      "default": "md"
+    },
+    "shape": { 
+      "type": "enum", 
+      "values": ["circle", "square"],
+      "default": "circle"
+    }
+  },
+  "accessibility": ["alt", "role"],
+  "version": "0.1.0"
+}

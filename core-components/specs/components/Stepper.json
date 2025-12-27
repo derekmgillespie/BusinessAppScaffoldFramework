@@ -1,0 +1,23 @@
+{
+  "name": "Stepper",
+  "category": "navigation",
+  "description": "Multi-step progress indicator",
+  "props": {
+    "steps": { 
+      "type": "array", 
+      "required": true,
+      "itemShape": {
+        "label": "string",
+        "description": "string"
+      }
+    },
+    "currentStep": { "type": "number", "required": true },
+    "orientation": { 
+      "type": "enum", 
+      "values": ["horizontal", "vertical"],
+      "default": "horizontal"
+    }
+  },
+  "accessibility": ["role", "aria-current"],
+  "version": "0.1.0"
+}

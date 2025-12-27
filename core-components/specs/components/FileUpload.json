@@ -1,0 +1,15 @@
+{
+  "name": "FileUpload",
+  "category": "form",
+  "description": "Drag-and-drop file upload area",
+  "props": {
+    "accept": { "type": "string" },
+    "multiple": { "type": "boolean", "default": false },
+    "maxSize": { "type": "number" },
+    "onChange": { "type": "function", "required": true },
+    "disabled": { "type": "boolean", "default": false }
+  },
+  "events": ["onChange"],
+  "accessibility": ["aria-label", "role"],
+  "version": "0.1.0"
+}

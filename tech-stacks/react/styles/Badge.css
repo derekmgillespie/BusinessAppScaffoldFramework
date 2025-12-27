@@ -1,0 +1,51 @@
+.ba-Badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family, system-ui);
+  font-weight: 600;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.ba-Badge--sm {
+  font-size: 0.6875rem;
+  padding: 2px 6px;
+  line-height: 1.2;
+}
+
+.ba-Badge--md {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  line-height: 1.3;
+}
+
+.ba-Badge--primary {
+  background-color: var(--color-primary, #007bff);
+  color: white;
+}
+
+.ba-Badge--secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.ba-Badge--success {
+  background-color: #28a745;
+  color: white;
+}
+
+.ba-Badge--error {
+  background-color: #dc3545;
+  color: white;
+}
+
+.ba-Badge--warning {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.ba-Badge--info {
+  background-color: #17a2b8;
+  color: white;
+}

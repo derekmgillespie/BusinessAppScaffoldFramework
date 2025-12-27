@@ -1,0 +1,15 @@
+{
+  "name": "Select",
+  "category": "form",
+  "description": "Dropdown select field",
+  "props": {
+    "value": { "type": "string" },
+    "options": { "type": "array", "description": "Array of { label, value }" },
+    "placeholder": { "type": "string" },
+    "disabled": { "type": "boolean", "default": false },
+    "onChange": { "type": "function" }
+  },
+  "events": ["onChange"],
+  "accessibility": ["aria-label"],
+  "version": "0.1.0"
+}

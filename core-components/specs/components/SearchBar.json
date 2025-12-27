@@ -1,0 +1,20 @@
+{
+  "name": "SearchBar",
+  "category": "form",
+  "description": "Search input with clear button",
+  "props": {
+    "value": { "type": "string", "required": true },
+    "placeholder": { "type": "string", "default": "Search..." },
+    "onChange": { "type": "function", "required": true },
+    "onSearch": { "type": "function" },
+    "disabled": { "type": "boolean", "default": false },
+    "size": { 
+      "type": "enum", 
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    }
+  },
+  "events": ["onChange", "onSearch"],
+  "accessibility": ["aria-label", "role"],
+  "version": "0.1.0"
+}

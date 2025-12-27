@@ -1,0 +1,22 @@
+{
+  "name": "ProgressBar",
+  "category": "feedback",
+  "description": "Visual progress indicator",
+  "props": {
+    "value": { "type": "number", "required": true },
+    "max": { "type": "number", "default": 100 },
+    "variant": { 
+      "type": "enum", 
+      "values": ["primary", "success", "warning", "error"],
+      "default": "primary"
+    },
+    "size": { 
+      "type": "enum", 
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "showLabel": { "type": "boolean", "default": false }
+  },
+  "accessibility": ["role", "aria-valuenow", "aria-valuemin", "aria-valuemax"],
+  "version": "0.1.0"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Table",
+  "category": "display",
+  "description": "Tabular data presentation",
+  "props": {
+    "columns": { "type": "array", "description": "Array of { key, label, width? }" },
+    "data": { "type": "array", "description": "Array of row objects" },
+    "sortable": { "type": "boolean", "default": false },
+    "pagination": { "type": "boolean", "default": false }
+  },
+  "version": "0.1.0"
+}

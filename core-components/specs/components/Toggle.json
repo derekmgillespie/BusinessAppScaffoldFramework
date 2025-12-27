@@ -1,0 +1,13 @@
+{
+  "name": "Toggle",
+  "category": "form",
+  "description": "On/off switch control",
+  "props": {
+    "checked": { "type": "boolean" },
+    "disabled": { "type": "boolean", "default": false },
+    "onChange": { "type": "function" }
+  },
+  "events": ["onChange"],
+  "accessibility": ["aria-checked", "role"],
+  "version": "0.1.0"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Card",
+  "category": "display",
+  "description": "Container for grouping related content",
+  "props": {
+    "elevation": { "type": "enum", "values": ["none", "sm", "md", "lg"] },
+    "variant": { "type": "enum", "values": ["filled", "outlined"] }
+  },
+  "slots": ["header", "media", "content", "actions"],
+  "version": "0.1.0"
+}

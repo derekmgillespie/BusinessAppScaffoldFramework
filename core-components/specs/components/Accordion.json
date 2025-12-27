@@ -1,0 +1,19 @@
+{
+  "name": "Accordion",
+  "category": "display",
+  "description": "Collapsible content sections",
+  "props": {
+    "items": { 
+      "type": "array", 
+      "required": true,
+      "itemShape": {
+        "title": "string",
+        "content": "node"
+      }
+    },
+    "allowMultiple": { "type": "boolean", "default": false },
+    "defaultExpanded": { "type": "array" }
+  },
+  "accessibility": ["role", "aria-expanded", "aria-controls"],
+  "version": "0.1.0"
+}

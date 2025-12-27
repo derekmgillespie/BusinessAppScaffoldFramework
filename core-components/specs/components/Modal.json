@@ -1,0 +1,14 @@
+{
+  "name": "Modal",
+  "category": "display",
+  "description": "Overlay dialog for focused tasks",
+  "props": {
+    "open": { "type": "boolean", "required": true },
+    "title": { "type": "string" },
+    "onClose": { "type": "function" }
+  },
+  "events": ["onClose"],
+  "accessibility": ["role", "aria-modal", "aria-labelledby"],
+  "slots": ["header", "body", "footer"],
+  "version": "0.1.0"
+}

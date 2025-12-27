@@ -1,0 +1,17 @@
+{
+  "name": "Popover",
+  "category": "display",
+  "description": "Contextual information overlay",
+  "props": {
+    "trigger": { "type": "node", "required": true },
+    "content": { "type": "node", "required": true },
+    "position": { 
+      "type": "enum", 
+      "values": ["top", "bottom", "left", "right"],
+      "default": "top"
+    },
+    "open": { "type": "boolean" }
+  },
+  "accessibility": ["role", "aria-describedby"],
+  "version": "0.1.0"
+}

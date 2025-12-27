@@ -1,0 +1,12 @@
+{
+  "name": "Navbar",
+  "category": "navigation",
+  "description": "Top app navigation bar",
+  "props": {
+    "brand": { "type": "string" },
+    "items": { "type": "array", "description": "Array of { label, href, icon? }" },
+    "fixed": { "type": "boolean", "default": true }
+  },
+  "slots": ["brand", "actions"],
+  "version": "0.1.0"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Rating",
+  "category": "form",
+  "description": "Star rating input and display",
+  "props": {
+    "value": { "type": "number", "required": true },
+    "max": { "type": "number", "default": 5 },
+    "onChange": { "type": "function" },
+    "readonly": { "type": "boolean", "default": false },
+    "size": { 
+      "type": "enum", 
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "allowHalf": { "type": "boolean", "default": false }
+  },
+  "events": ["onChange"],
+  "accessibility": ["role", "aria-label", "aria-valuenow", "aria-valuemax"],
+  "version": "0.1.0"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Divider",
+  "category": "display",
+  "description": "Visual separator for content sections",
+  "props": {
+    "orientation": { 
+      "type": "enum", 
+      "values": ["horizontal", "vertical"],
+      "default": "horizontal"
+    },
+    "spacing": { 
+      "type": "enum", 
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "label": { "type": "string" }
+  },
+  "accessibility": ["role"],
+  "version": "0.1.0"
+}

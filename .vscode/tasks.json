@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json.schemastore.org/tasks.json",
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Demo: Start Vite",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy","Bypass",
+        "-Command",
+        "& { $env:Path=\"C:\\Program Files\\nodejs;\" + $env:Path; Set-Location \"${workspaceFolder}\\prototypes\\react-demo\"; & \"C:\\Program Files\\nodejs\\npm.cmd\" run dev -- --host 0.0.0.0 --port 5173 }"
+      ],
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Demo: Restart Vite",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy","Bypass",
+        "-Command",
+        "& { Get-Process -Name node -ErrorAction SilentlyContinue | Where-Object { $_.Path -like '*vite*' -or $_.MainWindowTitle -like '*vite*' } | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; $env:Path=\"C:\\Program Files\\nodejs;\" + $env:Path; Set-Location \"${workspaceFolder}\\prototypes\\react-demo\"; & \"C:\\Program Files\\nodejs\\npm.cmd\" run dev -- --host 0.0.0.0 --port 5173 }"
+      ],
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Generate: React Components (Button, TextInput, Select, Checkbox)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy","Bypass",
+        "-Command",
+        "& { $env:Path=\"C:\\Program Files\\nodejs;\" + $env:Path; Set-Location \"${workspaceFolder}\"; & \"C:\\Program Files\\nodejs\\node.exe\" generators/component-generator/index.js core-components/specs/components/Button.json react material-design; & \"C:\\Program Files\\nodejs\\node.exe\" generators/component-generator/index.js core-components/specs/components/TextInput.json react material-design; & \"C:\\Program Files\\nodejs\\node.exe\" generators/component-generator/index.js core-components/specs/components/Select.json react material-design; & \"C:\\Program Files\\nodejs\\node.exe\" generators/component-generator/index.js core-components/specs/components/Checkbox.json react material-design }"
+      ]
+    }
+  ]
+}

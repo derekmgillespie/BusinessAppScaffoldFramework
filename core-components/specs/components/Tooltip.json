@@ -1,0 +1,16 @@
+{
+  "name": "Tooltip",
+  "category": "overlay",
+  "description": "Contextual help text on hover",
+  "props": {
+    "content": { "type": "string", "required": true },
+    "position": { 
+      "type": "enum", 
+      "values": ["top", "bottom", "left", "right"],
+      "default": "top"
+    }
+  },
+  "slots": ["children"],
+  "accessibility": ["role", "aria-describedby"],
+  "version": "0.1.0"
+}

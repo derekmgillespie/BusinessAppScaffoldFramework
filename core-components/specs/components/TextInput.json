@@ -1,0 +1,19 @@
+{
+  "name": "TextInput",
+  "category": "form",
+  "description": "Single-line text input field",
+  "props": {
+    "value": { "type": "string" },
+    "placeholder": { "type": "string" },
+    "type": { "type": "enum", "values": ["text", "email", "password", "number", "search"] },
+    "disabled": { "type": "boolean", "default": false },
+    "required": { "type": "boolean", "default": false },
+    "invalid": { "type": "boolean", "default": false },
+    "onChange": { "type": "function" },
+    "onFocus": { "type": "function" },
+    "onBlur": { "type": "function" }
+  },
+  "events": ["onChange", "onFocus", "onBlur"],
+  "accessibility": ["aria-label", "aria-invalid"],
+  "version": "0.1.0"
+}

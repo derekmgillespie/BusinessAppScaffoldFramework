@@ -1,0 +1,28 @@
+{
+  "name": "Dropdown",
+  "category": "navigation",
+  "description": "Menu with actionable items",
+  "props": {
+    "trigger": { "type": "node", "required": true },
+    "items": { 
+      "type": "array", 
+      "required": true,
+      "itemShape": {
+        "label": "string",
+        "value": "string",
+        "icon": "string",
+        "disabled": "boolean",
+        "divider": "boolean"
+      }
+    },
+    "onSelect": { "type": "function", "required": true },
+    "align": { 
+      "type": "enum", 
+      "values": ["left", "right"],
+      "default": "left"
+    }
+  },
+  "events": ["onSelect"],
+  "accessibility": ["role", "aria-expanded", "aria-haspopup"],
+  "version": "0.1.0"
+}

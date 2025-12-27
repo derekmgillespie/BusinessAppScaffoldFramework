@@ -1,0 +1,19 @@
+{
+  "name": "FormField",
+  "category": "form",
+  "description": "Form field wrapper with label, error message, and validation state",
+  "props": {
+    "label": { "type": "string" },
+    "required": { "type": "boolean", "default": false },
+    "error": { "type": "string" },
+    "hint": { "type": "string" },
+    "disabled": { "type": "boolean", "default": false },
+    "invalid": { "type": "boolean", "default": false },
+    "layout": { "type": "enum", "values": ["vertical", "horizontal"], "default": "vertical" }
+  },
+  "events": [],
+  "accessibility": ["aria-label", "aria-describedby", "aria-invalid"],
+  "slots": ["default"],
+  "styleHooks": { "bg": "color.bg", "fg": "color.fg", "error": "color.danger" },
+  "version": "0.1.0"
+}

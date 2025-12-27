@@ -1,0 +1,71 @@
+.ba-Chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-family: var(--font-family, system-ui);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ba-Chip--sm {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+}
+
+.ba-Chip--md {
+  font-size: 0.875rem;
+  padding: 4px 12px;
+}
+
+.ba-Chip--default {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.ba-Chip--primary {
+  background-color: var(--color-primary, #1976d2);
+  color: white;
+}
+
+.ba-Chip--success {
+  background-color: #28a745;
+  color: white;
+}
+
+.ba-Chip--warning {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.ba-Chip--error {
+  background-color: #dc3545;
+  color: white;
+}
+
+.ba-Chip-icon {
+  font-size: 1em;
+  line-height: 1;
+}
+
+.ba-Chip-label {
+  line-height: 1;
+}
+
+.ba-Chip-remove {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.25em;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 2px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.ba-Chip-remove:hover {
+  opacity: 1;
+}

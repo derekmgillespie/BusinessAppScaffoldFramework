@@ -1,0 +1,18 @@
+{
+  "name": "Toast",
+  "category": "feedback",
+  "description": "Temporary notification message",
+  "props": {
+    "message": { "type": "string", "required": true },
+    "variant": { 
+      "type": "enum", 
+      "values": ["success", "error", "warning", "info"],
+      "default": "info"
+    },
+    "duration": { "type": "number", "default": 3000 },
+    "onClose": { "type": "function" }
+  },
+  "events": ["onClose"],
+  "accessibility": ["role", "aria-live"],
+  "version": "0.1.0"
+}

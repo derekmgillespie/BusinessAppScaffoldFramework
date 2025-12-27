@@ -1,0 +1,71 @@
+.ba-FormField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.ba-FormField--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-4, 16px);
+}
+
+.ba-FormField--horizontal .ba-FormField__label {
+  flex: 0 0 150px;
+  padding-top: var(--space-2, 8px);
+}
+
+.ba-FormField--horizontal .ba-FormField__input-wrapper {
+  flex: 1;
+}
+
+.ba-FormField[data-disabled="true"] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.ba-FormField__label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--color-fg, #111);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1, 4px);
+}
+
+.ba-FormField__required {
+  color: var(--color-danger, #dc2626);
+  font-weight: 600;
+}
+
+.ba-FormField__input-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.ba-FormField__input-wrapper > * {
+  width: 100%;
+}
+
+.ba-FormField__message {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin-top: var(--space-1, 4px);
+}
+
+.ba-FormField__message--hint {
+  color: var(--color-text-secondary, #666);
+}
+
+.ba-FormField__message--error {
+  color: var(--color-danger, #dc2626);
+  font-weight: 500;
+}
+
+/* Support for invalid state styling */
+.ba-FormField[aria-invalid="true"] .ba-FormField__input-wrapper input,
+.ba-FormField[aria-invalid="true"] .ba-FormField__input-wrapper textarea,
+.ba-FormField[aria-invalid="true"] .ba-FormField__input-wrapper select {
+  border-color: var(--color-danger, #dc2626) !important;
+  background-color: rgba(220, 38, 38, 0.03);
+}

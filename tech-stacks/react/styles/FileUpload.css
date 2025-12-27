@@ -1,0 +1,56 @@
+.ba-FileUpload {
+  border: 2px dashed #ccc;
+  border-radius: var(--radius, 6px);
+  padding: var(--space-4, 24px);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  font-family: var(--font-family, system-ui);
+}
+
+.ba-FileUpload:hover:not(.ba-FileUpload--disabled) {
+  border-color: var(--color-primary, #1976d2);
+  background-color: #f0f7ff;
+}
+
+.ba-FileUpload--dragging {
+  border-color: var(--color-primary, #1976d2);
+  background-color: #e3f2fd;
+  border-style: solid;
+}
+
+.ba-FileUpload--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ba-FileUpload-input {
+  display: none;
+}
+
+.ba-FileUpload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2, 12px);
+}
+
+.ba-FileUpload-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.ba-FileUpload-text {
+  font-size: 0.9375rem;
+  color: #333;
+}
+
+.ba-FileUpload-text strong {
+  color: var(--color-primary, #1976d2);
+}
+
+.ba-FileUpload-hint {
+  font-size: 0.75rem;
+  color: #999;
+}

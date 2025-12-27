@@ -1,0 +1,46 @@
+.ba-Rating {
+  display: inline-flex;
+  gap: 2px;
+  font-family: var(--font-family, system-ui);
+}
+
+.ba-Rating:not(.ba-Rating--readonly) {
+  cursor: pointer;
+}
+
+.ba-Rating--readonly {
+  cursor: default;
+}
+
+.ba-Rating--sm {
+  font-size: 1rem;
+}
+
+.ba-Rating--md {
+  font-size: 1.5rem;
+}
+
+.ba-Rating--lg {
+  font-size: 2rem;
+}
+
+.ba-Rating-star {
+  color: #e0e0e0;
+  transition: color 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.ba-Rating:not(.ba-Rating--readonly) .ba-Rating-star:hover {
+  transform: scale(1.1);
+}
+
+.ba-Rating-star--full {
+  color: #ffc107;
+}
+
+.ba-Rating-star--half {
+  background: linear-gradient(90deg, #ffc107 50%, #e0e0e0 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

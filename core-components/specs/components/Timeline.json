@@ -1,0 +1,24 @@
+{
+  "name": "Timeline",
+  "category": "display",
+  "description": "Chronological event display",
+  "props": {
+    "items": { 
+      "type": "array", 
+      "required": true,
+      "itemShape": {
+        "title": "string",
+        "description": "string",
+        "time": "string",
+        "icon": "string"
+      }
+    },
+    "orientation": { 
+      "type": "enum", 
+      "values": ["vertical", "horizontal"],
+      "default": "vertical"
+    }
+  },
+  "accessibility": ["role"],
+  "version": "0.1.0"
+}

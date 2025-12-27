@@ -1,0 +1,21 @@
+{
+  "name": "business-app-scaffold-framework",
+  "version": "0.1.0",
+  "description": "A framework for creating business applications from Figma mockups",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified yet\"",
+    "generate:react:button": "node generators/component-generator/index.js core-components/specs/components/Button.json react material-design",
+    "generate:react:textinput": "node generators/component-generator/index.js core-components/specs/components/TextInput.json react material-design",
+    "generate:react:formfield": "node generators/component-generator/index.js core-components/specs/components/FormField.json react material-design"
+  },
+  "keywords": [
+    "figma",
+    "design-to-code",
+    "business-application",
+    "framework",
+    "component-library"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Chip",
+  "category": "display",
+  "description": "Compact label with optional remove action",
+  "props": {
+    "label": { "type": "string", "required": true },
+    "variant": { 
+      "type": "enum", 
+      "values": ["default", "primary", "success", "warning", "error"],
+      "default": "default"
+    },
+    "size": { 
+      "type": "enum", 
+      "values": ["sm", "md"],
+      "default": "md"
+    },
+    "removable": { "type": "boolean", "default": false },
+    "onRemove": { "type": "function" },
+    "icon": { "type": "string" }
+  },
+  "events": ["onRemove"],
+  "accessibility": ["role", "aria-label"],
+  "version": "0.1.0"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Breadcrumb",
+  "category": "navigation",
+  "description": "Hierarchical navigation trail",
+  "props": {
+    "items": { "type": "array", "description": "Array of { label, href }" }
+  },
+  "version": "0.1.0"
+}

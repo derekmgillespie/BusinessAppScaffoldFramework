@@ -1,0 +1,19 @@
+{
+  "name": "Badge",
+  "category": "display",
+  "description": "Status label or count indicator",
+  "props": {
+    "label": { "type": "string", "required": true },
+    "variant": { 
+      "type": "enum", 
+      "values": ["primary", "secondary", "success", "error", "warning", "info"],
+      "default": "primary"
+    },
+    "size": { 
+      "type": "enum", 
+      "values": ["sm", "md"],
+      "default": "md"
+    }
+  },
+  "version": "0.1.0"
+}

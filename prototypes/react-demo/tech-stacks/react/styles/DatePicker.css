@@ -1,0 +1,30 @@
+.ba-DatePicker {
+  font-family: var(--font-family, system-ui);
+  color: var(--color-fg, #111);
+  background: var(--color-bg, #fff);
+  border: 1px solid var(--color-border, #ddd);
+  border-radius: var(--radius, 6px);
+  padding: var(--space-2, 8px) var(--space-3, 12px);
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.ba-DatePicker:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ba-DatePicker:focus {
+  outline: none;
+  border-color: var(--color-primary, #007bff);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.ba-DatePicker::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: opacity(0.6);
+}
+
+.ba-DatePicker::-webkit-calendar-picker-indicator:hover {
+  filter: opacity(1);
+}

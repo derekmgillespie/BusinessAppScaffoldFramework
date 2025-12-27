@@ -1,0 +1,18 @@
+{
+  "name": "Slider",
+  "category": "form",
+  "description": "Range input for numeric values",
+  "props": {
+    "value": { "type": "number", "required": true },
+    "min": { "type": "number", "default": 0 },
+    "max": { "type": "number", "default": 100 },
+    "step": { "type": "number", "default": 1 },
+    "onChange": { "type": "function", "required": true },
+    "disabled": { "type": "boolean", "default": false },
+    "showValue": { "type": "boolean", "default": true },
+    "label": { "type": "string" }
+  },
+  "events": ["onChange"],
+  "accessibility": ["aria-label", "aria-valuemin", "aria-valuemax", "aria-valuenow"],
+  "version": "0.1.0"
+}

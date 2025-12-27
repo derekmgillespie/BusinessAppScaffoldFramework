@@ -1,0 +1,36 @@
+.ba-Radio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.ba-Radio-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  cursor: pointer;
+  padding: var(--space-1, 4px);
+}
+
+.ba-Radio-option:has(input:disabled) {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ba-Radio-option input[type="radio"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.ba-Radio-option input[type="radio"]:disabled {
+  cursor: not-allowed;
+}
+
+.ba-Radio-label {
+  font-family: var(--font-family, system-ui);
+  color: var(--color-fg, #111);
+  font-size: 0.9375rem;
+  user-select: none;
+}

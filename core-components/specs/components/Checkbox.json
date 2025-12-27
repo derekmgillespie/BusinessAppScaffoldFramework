@@ -1,0 +1,14 @@
+{
+  "name": "Checkbox",
+  "category": "form",
+  "description": "Binary selection control",
+  "props": {
+    "checked": { "type": "boolean" },
+    "label": { "type": "string" },
+    "disabled": { "type": "boolean", "default": false },
+    "onChange": { "type": "function" }
+  },
+  "events": ["onChange"],
+  "accessibility": ["aria-checked", "role"],
+  "version": "0.1.0"
+}

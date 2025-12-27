@@ -1,0 +1,68 @@
+.ba-Divider {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family, system-ui);
+}
+
+.ba-Divider--horizontal {
+  width: 100%;
+  flex-direction: row;
+}
+
+.ba-Divider--vertical {
+  height: 100%;
+  flex-direction: column;
+}
+
+.ba-Divider--spacing-sm.ba-Divider--horizontal {
+  margin: var(--space-2, 12px) 0;
+}
+
+.ba-Divider--spacing-md.ba-Divider--horizontal {
+  margin: var(--space-3, 16px) 0;
+}
+
+.ba-Divider--spacing-lg.ba-Divider--horizontal {
+  margin: var(--space-4, 24px) 0;
+}
+
+.ba-Divider--spacing-sm.ba-Divider--vertical {
+  margin: 0 var(--space-2, 12px);
+}
+
+.ba-Divider--spacing-md.ba-Divider--vertical {
+  margin: 0 var(--space-3, 16px);
+}
+
+.ba-Divider--spacing-lg.ba-Divider--vertical {
+  margin: 0 var(--space-4, 24px);
+}
+
+.ba-Divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #e0e0e0;
+}
+
+.ba-Divider--vertical .ba-Divider-line {
+  width: 1px;
+  height: auto;
+  min-height: 100%;
+}
+
+.ba-Divider-line--full {
+  flex: none;
+  width: 100%;
+}
+
+.ba-Divider--vertical .ba-Divider-line--full {
+  width: 1px;
+  height: 100%;
+}
+
+.ba-Divider-label {
+  padding: 0 var(--space-2, 12px);
+  font-size: 0.875rem;
+  color: #666;
+  white-space: nowrap;
+}

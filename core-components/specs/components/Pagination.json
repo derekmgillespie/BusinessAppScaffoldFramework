@@ -1,0 +1,15 @@
+{
+  "name": "Pagination",
+  "category": "navigation",
+  "description": "Page navigation control",
+  "props": {
+    "currentPage": { "type": "number", "required": true },
+    "totalPages": { "type": "number", "required": true },
+    "onPageChange": { "type": "function", "required": true },
+    "showFirstLast": { "type": "boolean", "default": true },
+    "siblingCount": { "type": "number", "default": 1 }
+  },
+  "events": ["onPageChange"],
+  "accessibility": ["role", "aria-label", "aria-current"],
+  "version": "0.1.0"
+}

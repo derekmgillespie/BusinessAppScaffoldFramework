@@ -1,0 +1,21 @@
+{
+  "name": "Skeleton",
+  "category": "feedback",
+  "description": "Loading placeholder animation",
+  "props": {
+    "variant": { 
+      "type": "enum", 
+      "values": ["text", "circular", "rectangular"],
+      "default": "text"
+    },
+    "width": { "type": "string" },
+    "height": { "type": "string" },
+    "animation": { 
+      "type": "enum", 
+      "values": ["pulse", "wave", "none"],
+      "default": "pulse"
+    }
+  },
+  "accessibility": ["role", "aria-busy"],
+  "version": "0.1.0"
+}

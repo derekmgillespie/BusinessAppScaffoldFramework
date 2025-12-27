@@ -1,0 +1,19 @@
+{
+  "name": "Spinner",
+  "category": "feedback",
+  "description": "Loading indicator",
+  "props": {
+    "size": { 
+      "type": "enum", 
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "variant": { 
+      "type": "enum", 
+      "values": ["primary", "secondary", "white"],
+      "default": "primary"
+    }
+  },
+  "accessibility": ["role", "aria-label"],
+  "version": "0.1.0"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Radio",
+  "category": "form",
+  "description": "Exclusive selection control",
+  "props": {
+    "name": { "type": "string", "required": true },
+    "value": { "type": "string" },
+    "options": { "type": "array", "description": "Array of { label, value }" },
+    "disabled": { "type": "boolean", "default": false },
+    "onChange": { "type": "function" }
+  },
+  "events": ["onChange"],
+  "accessibility": ["role", "aria-checked"],
+  "version": "0.1.0"
+}
